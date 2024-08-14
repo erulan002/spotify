@@ -40,3 +40,5 @@ class AppTheme {
     ),
   );
 }
+
+class Example {}
