@@ -10,4 +10,6 @@ class AppVectors {
 
   static const googleLogo = '${basePath}google_logo$format';
   static const appleLogo = '${basePath}apple_logo$format';
+
+  static const homeTopCard = '${basePath}home_top_card$format';
 }

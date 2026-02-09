@@ -3,10 +3,18 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
-import 'package:spotify/presentation/auth/pages/signin.dart';
+import 'package:spotify/data/models/signup_user_req.dart';
+import 'package:spotify/domain/usecases/auth/signup.dart';
+import 'package:spotify/presentation/auth/pages/signIn.dart';
+import 'package:spotify/presentation/home/pages/home_page.dart';
+import 'package:spotify/service_locator.dart';
 
 class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+  SignupPage({super.key});
+
+  final TextEditingController _fullName = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,85 +36,42 @@ class SignupPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _registerText(),
-            // const SizedBox(height: 30),
-            // RichText(
-            //   text: TextSpan(
-            //     children: [
-            //       const TextSpan(text: 'If You Need Any Support '),
-            //       TextSpan(
-            //         text: 'Click Here',
-            //         style: TextStyle(
-            //           color: Colors.green[400],
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             const SizedBox(height: 50),
             _fullNameField(context),
             const SizedBox(height: 20),
-            _passwordField(context),
-            const SizedBox(height: 20),
             _emailField(context),
-            // const Row(
-            //   children: [
-            //     SizedBox(width: 20),
-            //     Align(
-            //       alignment: Alignment.centerLeft,
-            //       child: Text('Recovery Password'),
-            //     ),
-            //   ],
-            // ),
+            const SizedBox(height: 20),
+            _passwordField(context),
             const SizedBox(height: 30),
             BasicAppButton(
-              onPressed: () {},
+              onPressed: () async {
+                var result = await sl<SignupUseCase>().call(
+                  params: SignupUserReq(
+                    fullName: _fullName.text.toString(),
+                    email: _email.text.toString(),
+                    password: _password.text.toString(),
+                  ),
+                );
+
+                result.fold((left) {
+                  var snackBar = SnackBar(
+                    content: Text(left),
+                    behavior: SnackBarBehavior.floating,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }, (right) {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const HomePage(),
+                    ),
+                    (route) => false,
+                  );
+                });
+              },
               title: 'Create Account',
             ),
             const SizedBox(height: 30),
-            // Row(
-            //   children: <Widget>[
-            //     Expanded(
-            //       child: Container(
-            //         height: 1,
-            //         decoration: const BoxDecoration(
-            //           gradient: LinearGradient(
-            //             colors: [
-            //               Colors.grey,
-            //               Colors.black,
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     const Padding(
-            //       padding: EdgeInsets.symmetric(horizontal: 8.0),
-            //       child: Text('Or'),
-            //     ),
-            //     Expanded(
-            //       child: Container(
-            //         height: 1,
-            //         decoration: const BoxDecoration(
-            //           gradient: LinearGradient(
-            //             colors: [
-            //               Colors.black,
-            //               Colors.grey,
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            // const SizedBox(height: 30),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     SvgPicture.asset(AppVectors.googleLogo),
-            //     const SizedBox(width: 40),
-            //     SvgPicture.asset(AppVectors.appleLogo),
-            //   ],
-            // ),
-            // const SizedBox(height: 30),
           ],
         ),
       ),
@@ -125,6 +90,7 @@ class SignupPage extends StatelessWidget {
 
   Widget _fullNameField(BuildContext context) {
     return TextField(
+      controller: _fullName,
       decoration: const InputDecoration(
         hintText: 'Full Name',
       ).applyDefaults(
@@ -135,6 +101,7 @@ class SignupPage extends StatelessWidget {
 
   Widget _emailField(BuildContext context) {
     return TextField(
+      controller: _email,
       decoration: const InputDecoration(
         hintText: 'Enter Email',
       ).applyDefaults(
@@ -145,6 +112,7 @@ class SignupPage extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      controller: _password,
       decoration: const InputDecoration(
         hintText: 'Password',
       ).applyDefaults(
@@ -170,7 +138,7 @@ class SignupPage extends StatelessWidget {
             onPressed: () => Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => const SigninPage(),
+                builder: (BuildContext context) => SignInPage(),
               ),
             ),
             child: const Text('Sign In'),
