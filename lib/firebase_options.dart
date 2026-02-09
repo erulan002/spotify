@@ -41,46 +41,48 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBifeBidrPDdPvRhnxG5M7RcBswz_XCkYw',
-    appId: '1:95296817485:web:ee00bf73704fdce5f78f04',
-    messagingSenderId: '95296817485',
-    projectId: 'spotifyappclone0101',
-    authDomain: 'spotifyappclone0101.firebaseapp.com',
-    storageBucket: 'spotifyappclone0101.appspot.com',
+    apiKey: 'AIzaSyDuVVrj7tk6d5hsGdicWSf1RljOkQs1LgI',
+    appId: '1:147803948468:web:439a156fa9063001f21ee1',
+    messagingSenderId: '147803948468',
+    projectId: 'spotify-27bc1',
+    authDomain: 'spotify-27bc1.firebaseapp.com',
+    storageBucket: 'spotify-27bc1.firebasestorage.app',
+    measurementId: 'G-MSWH4V04GN',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA1rSyYgSIpCiaYkDqldTTLQ4eYpFLTJZQ',
-    appId: '1:95296817485:android:fa4f0fa7d01def93f78f04',
-    messagingSenderId: '95296817485',
-    projectId: 'spotifyappclone0101',
-    storageBucket: 'spotifyappclone0101.appspot.com',
+    apiKey: 'AIzaSyBHwYqXiypAU3uNg-CNX9wKT3NGFbwPe6I',
+    appId: '1:147803948468:android:4e07811d541aedcef21ee1',
+    messagingSenderId: '147803948468',
+    projectId: 'spotify-27bc1',
+    storageBucket: 'spotify-27bc1.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDQY_xCbj6EdCUiKT2VJS1T4cConDkSTF0',
-    appId: '1:95296817485:ios:99f5cf578b5a28d9f78f04',
-    messagingSenderId: '95296817485',
-    projectId: 'spotifyappclone0101',
-    storageBucket: 'spotifyappclone0101.appspot.com',
+    apiKey: 'AIzaSyAwLiI83j8_V7QAPOpUfxU0wHld9BkQmtU',
+    appId: '1:147803948468:ios:70e90fbb404fa3ccf21ee1',
+    messagingSenderId: '147803948468',
+    projectId: 'spotify-27bc1',
+    storageBucket: 'spotify-27bc1.firebasestorage.app',
     iosBundleId: 'com.example.spotify',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDQY_xCbj6EdCUiKT2VJS1T4cConDkSTF0',
-    appId: '1:95296817485:ios:99f5cf578b5a28d9f78f04',
-    messagingSenderId: '95296817485',
-    projectId: 'spotifyappclone0101',
-    storageBucket: 'spotifyappclone0101.appspot.com',
+    apiKey: 'AIzaSyAwLiI83j8_V7QAPOpUfxU0wHld9BkQmtU',
+    appId: '1:147803948468:ios:70e90fbb404fa3ccf21ee1',
+    messagingSenderId: '147803948468',
+    projectId: 'spotify-27bc1',
+    storageBucket: 'spotify-27bc1.firebasestorage.app',
     iosBundleId: 'com.example.spotify',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBifeBidrPDdPvRhnxG5M7RcBswz_XCkYw',
-    appId: '1:95296817485:web:976af8d6474ac685f78f04',
-    messagingSenderId: '95296817485',
-    projectId: 'spotifyappclone0101',
-    authDomain: 'spotifyappclone0101.firebaseapp.com',
-    storageBucket: 'spotifyappclone0101.appspot.com',
+    apiKey: 'AIzaSyDuVVrj7tk6d5hsGdicWSf1RljOkQs1LgI',
+    appId: '1:147803948468:web:a349cfe97e1d2aa3f21ee1',
+    messagingSenderId: '147803948468',
+    projectId: 'spotify-27bc1',
+    authDomain: 'spotify-27bc1.firebaseapp.com',
+    storageBucket: 'spotify-27bc1.firebasestorage.app',
+    measurementId: 'G-HJKP0NTZDK',
   );
 }
